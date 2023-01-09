@@ -20,7 +20,7 @@ module iob_gpio
     // output enable can be used to tristate outputs on external module
     output [GPIO_W-1:0] gpio_output_enable,
     output [GPIO_W-1:0] cathode_output,
-    output [1:0] counter_output,
+    output [7:0] counter_output,
     
 `include "iob_gen_if.vh"
     );
@@ -62,8 +62,8 @@ module iob_gpio
          .data_out  (GPIO_CATHODE_OUTPUT)
 			  );
 
-    `IOB_WIRE(GPIO_COUNTER_OUTPUT, 2)
-    iob_reg #(2)
+    `IOB_WIRE(GPIO_COUNTER_OUTPUT, 8)
+    iob_reg #(8)
     counter_output_reg   (
          .clk       (clk),
          .arst      (rst),
