@@ -21,3 +21,4 @@ void gpio_set(uint32_t value){
 void gpio_set_output_enable(uint32_t value){
   IOB_GPIO_SET_OUTPUT_ENABLE(value);
 }
+

@@ -9,9 +9,12 @@
 
       // Registers interface
       .gpio_input (gpio_input),
-      .cathode_input (cathode_input),
+      .echo_input (echo_input),
       .gpio_output (gpio_output),
       .gpio_output_enable (gpio_output_enable),
+      .cathode_output (cathode_output),
+      .counter_output (counter_output),
+      .trigger_output (trigger_output),
 
       // CPU interface
       .valid   (slaves_req[`valid(`GPIO)]),
