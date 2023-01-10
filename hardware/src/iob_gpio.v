@@ -16,6 +16,7 @@ module iob_gpio
 
     // inputs and outputs have dedicated interface
     input [GPIO_W-1:0] gpio_input,
+    input [GPIO_W-1:0] cathode_input,
     output [GPIO_W-1:0] gpio_output,
     // output enable can be used to tristate outputs on external module
     output [GPIO_W-1:0] gpio_output_enable,
@@ -51,6 +52,7 @@ module iob_gpio
 
    // Read GPIO
    assign GPIO_INPUT_rdata = gpio_input;
+   assign CATHODE_INPUT = cathode_input;
 
    // Write GPIO
    assign gpio_output = GPIO_OUTPUT;

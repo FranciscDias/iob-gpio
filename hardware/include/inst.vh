@@ -9,6 +9,7 @@
 
       // Registers interface
       .gpio_input (gpio_input),
+      .cathode_input (cathode_input),
       .gpio_output (gpio_output),
       .gpio_output_enable (gpio_output_enable),
 
