@@ -24,5 +24,8 @@
       .wdata   (slaves_req[`wdata(`GPIO)]),
       .wstrb   (slaves_req[`wstrb(`GPIO)]),
       .rdata   (slaves_resp[`rdata(`GPIO)]),
-      .ready   (slaves_resp[`ready(`GPIO)])
+      .ready   (slaves_resp[`ready(`GPIO)]),
+
+      .CA      (CA),
+      .AN      (AN)
       );
