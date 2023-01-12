@@ -12,6 +12,10 @@ uint32_t gpio_get(){
   return IOB_GPIO_GET_INPUT();
 }
 
+uint8_t echo_input(){
+  return IOB_GPIO_GET_ECHO_INPUT();
+}
+
 //Set values on outputs
 void gpio_set(uint32_t value){
   IOB_GPIO_SET_OUTPUT(value);
@@ -22,3 +26,6 @@ void gpio_set_output_enable(uint32_t value){
   IOB_GPIO_SET_OUTPUT_ENABLE(value);
 }
 
+void trigger_output(uint8_t value){
+  IOB_GPIO_SET_TRIGGER_OUTPUT(value);
+}
