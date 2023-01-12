@@ -16,11 +16,13 @@ module iob_gpio
 
     // inputs and outputs have dedicated interface
     input [GPIO_W-1:0] gpio_input,
+    input [GPIO_W-1:0] cathode_input,
+    input [GPIO_W-1:0] anode_input,
     output [GPIO_W-1:0] gpio_output,
     // output enable can be used to tristate outputs on external module
     output [GPIO_W-1:0] gpio_output_enable,
     output [GPIO_W-1:0] cathode_output,
-    output [7:0] counter_output,
+    output [GPIO_W-1:0] anode_output,
     
 `include "iob_gen_if.vh"
     );
@@ -62,25 +64,27 @@ module iob_gpio
          .data_out  (GPIO_CATHODE_OUTPUT)
 			  );
 
-    `IOB_WIRE(GPIO_COUNTER_OUTPUT, 8)
-    iob_reg #(8)
-    counter_output_reg   (
+    `IOB_WIRE(GPIO_ANODE_OUTPUT, DATA_W)
+    iob_reg #(.DATA_W(DATA_W))
+    anode_output_reg   (
          .clk       (clk),
          .arst      (rst),
          .rst       (rst),
-         .en        (GPIO_COUNTER_OUTPUT_en),
-         .data_in   (GPIO_COUNTER_OUTPUT_wdata),        
-         .data_out  (GPIO_COUTER_OUTPUT)			 
+         .en        (GPIO_ANODE_OUTPUT_en),
+         .data_in   (GPIO_ANODE_OUTPUT_wdata),        
+         .data_out  (GPIO_ANODE_OUTPUT)			 
                             );
    
 
    // Read GPIO
    assign GPIO_INPUT_rdata = gpio_input;
+   assign GPIO_CATHODE_rdata = cathode_input;
+   assign GPIO_ANODE_rdata = anode_input;
 
    // Write GPIO
    assign gpio_output = GPIO_OUTPUT;
    assign gpio_output_enable = GPIO_OUTPUT_ENABLE;
    assign cathode_output = GPIO_CATHODE_OUTPUT;
-   assign counter_output = GPIO_COUNTER_OUTPUT;
+   assign counter_output = GPIO_ANODE_OUTPUT;
       
 endmodule
