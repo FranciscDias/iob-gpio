@@ -42,7 +42,7 @@ void gpio_set_cathode_output(uint32_t value){
   IOB_GPIO_SET_CATHODE_OUTPUT(value);
 }
 
-void gpio_set_anode_output(uint32_t value){
+void gpio_set_anode_output(uint8_t value){
   IOB_GPIO_SET_ANODE_OUTPUT(value);
 }
 

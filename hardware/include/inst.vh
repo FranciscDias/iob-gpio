@@ -9,14 +9,14 @@
 
       // Registers interface
       .gpio_input (gpio_input),
-      .echo_input (echo_input),
-      .cathode_input (cathode_input),
-      .anode_input (anode_input),
+      //.echo_input (echo_input),
+      //.cathode_input (cathode_input),
+      //.anode_input (anode_input),
       .gpio_output (gpio_output),
       .gpio_output_enable (gpio_output_enable),
-      .cathode_output (cathode_output),
+      //.cathode_output (cathode_output),
       .anode_output (anode_output),
-      .trigger_output (trigger_output),
+     // .trigger_output (trigger_output),
 
       // CPU interface
       .valid   (slaves_req[`valid(`GPIO)]),
@@ -26,6 +26,6 @@
       .rdata   (slaves_resp[`rdata(`GPIO)]),
       .ready   (slaves_resp[`ready(`GPIO)]),
 
-      .CA      (CA),
-      .AN      (AN)
+      .PIN(gpio_output_enable),
+      .AN(anode_output)
       );
