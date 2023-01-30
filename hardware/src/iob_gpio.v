@@ -19,10 +19,14 @@ module iob_gpio
  //   input [7:0] echo_input,
  //   input [GPIO_W-1:0] cathode_input,
  //   input [GPIO_W-1:0] anode_input,
+    input BTN,
+    input JUMP_IN,
+  //  input button_input,
     // output enable can be used to tristate outputs on external module
     output [GPIO_W-1:0] gpio_output_enable,
     output [GPIO_W-1:0] gpio_output,
     output [7:0]        PIN,
+    output              JUMP_OUT,
     output [7:0] anode_output,
     output [3:0] AN,
  //   output [7:0] trigger_output,
@@ -78,25 +82,34 @@ module iob_gpio
          .data_in   (GPIO_ANODE_OUTPUT_wdata),        
          .data_out  (GPIO_ANODE_OUTPUT)			 
     );
-   /*
-    `IOB_WIRE(GPIO_TRIGGER_OUTPUT, 8)
-    iob_reg #(8)
+   
+    `IOB_WIRE(GPIO_JUMP_OUTPUT, 1)
+    iob_reg #(1)
     trigger_output_reg   (
         .clk       (clk),
         .arst      (rst),
         .rst       (rst),
-        .en        (GPIO_TRIGGER_OUTPUT_en),
-        .data_in   (GPIO_TRIGGER_OUTPUT_wdata),        
-        .data_out  (GPIO_TRIGGER_OUTPUT)			 
-    );*/
+        .en        (GPIO_JUMP_OUTPUT_en),
+        .data_in   (GPIO_JUMP_OUTPUT_wdata),        
+        .data_out  (GPIO_JUMP_OUTPUT)			 
+    );
+
+   
 
    // Read GPIO
    assign GPIO_INPUT_rdata = gpio_input;
    /*assign GPIO_ECHO_INPUT_rdata = echo_input;
    assign GPIO_CATHODE_rdata = cathode_input;
    assign GPIO_ANODE_rdata = anode_input;*/
+   assign GPIO_BUTTON_INPUT_rdata = BTN;
+   assign GPIO_JUMP_INPUT_rdata = JUMP_IN;
+ //  assign GPIO_BUTTON_INPUT_rdata = button_input;
+   
+   
+   
 
    // Write GPIO
+   assign JUMP_OUT = GPIO_JUMP_OUTPUT;
    assign gpio_output = GPIO_OUTPUT;
    assign gpio_output_enable = GPIO_OUTPUT_ENABLE;
    assign PIN = GPIO_OUTPUT_ENABLE;
