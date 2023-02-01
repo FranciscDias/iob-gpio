@@ -27,7 +27,7 @@ module iob_gpio
     output [GPIO_W-1:0] gpio_output,
     output [7:0]        PIN,
     output              JUMP_OUT,
-    output [7:0] anode_output,
+    //output [7:0] anode_output,
     output [3:0] AN,
  //   output [7:0] trigger_output,
  //   output [GPIO_W-1:0] anode_output,  
@@ -117,7 +117,7 @@ module iob_gpio
    
    /*assign cathode_output = GPIO_CATHODE_OUTPUT;
    assign trigger_output = GPIO_TRIGGER_OUTPUT;*/
-   assign anode_output = GPIO_ANODE_OUTPUT;
+  // assign anode_output = GPIO_ANODE_OUTPUT;
    assign AN = GPIO_ANODE_OUTPUT;
    
    

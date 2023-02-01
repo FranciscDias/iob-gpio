@@ -12,11 +12,11 @@
       //.echo_input (echo_input),
       //.cathode_input (cathode_input),
       //.anode_input (anode_input),
-      .button_input (button_input),
+     // .button_input (button_input),
       .gpio_output (gpio_output),
       .gpio_output_enable (gpio_output_enable),
       //.cathode_output (cathode_output),
-      .anode_output (anode_output),
+     // .anode_output (anode_output),
      // .trigger_output (trigger_output),
 
       // CPU interface
@@ -27,9 +27,9 @@
       .rdata   (slaves_resp[`rdata(`GPIO)]),
       .ready   (slaves_resp[`ready(`GPIO)]),
 
-      .JUMP_IN(GPIO_JUMP_INPUT_rdata),
-      .JUMP_OUT(gpio_jump_output),
-      .PIN(gpio_output_enable),
-      .AN(anode_output),
-      .BTN(GPIO_BUTTON_INPUT_rdata)
+      .JUMP_IN(JUMP_IN),
+      .JUMP_OUT(JUMP_OUT),
+      .PIN(PIN),
+      .AN(AN),
+      .BTN(BTN)
       );
