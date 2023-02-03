@@ -1,7 +1,8 @@
    // GPIO
-   input [`GPIO_INPUT_W-1:0] gpio_input,  
-   input                     BTN,
+   input                     BTN_1,
+   input                     BTN_2,
    input                     JUMP_IN,
+   input            	     SWITCH,
    output                    JUMP_OUT,
    output [7:0] 	     PIN,
    output [3:0]              AN,

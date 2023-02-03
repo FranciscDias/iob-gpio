@@ -15,22 +15,17 @@ module iob_gpio
 `include "iob_s_if.vh"
 
     // inputs and outputs have dedicated interface
-    input [GPIO_W-1:0] gpio_input,
- //   input [7:0] echo_input,
- //   input [GPIO_W-1:0] cathode_input,
- //   input [GPIO_W-1:0] anode_input,
-    input BTN,
+    input BTN_1,
+    input BTN_2,
     input JUMP_IN,
-  //  input button_input,
+    input SWITCH,
     // output enable can be used to tristate outputs on external module
     output [GPIO_W-1:0] gpio_output_enable,
     output [GPIO_W-1:0] gpio_output,
     output [7:0]        PIN,
     output              JUMP_OUT,
-    output [7:0] anode_output,
-    output [3:0] AN,
- //   output [7:0] trigger_output,
- //   output [GPIO_W-1:0] anode_output,  
+    output [7:0]        anode_output,
+    output [3:0]        AN,
  
 `include "iob_gen_if.vh"
     );
@@ -61,17 +56,6 @@ module iob_gpio
         .data_out   (GPIO_OUTPUT)
     );
 
-  /* `IOB_WIRE(GPIO_CATHODE_OUTPUT, DATA_W)
-   iob_reg #(.DATA_W(DATA_W))
-   cathode_output_reg    (
-        .clk       (clk),
-        .arst      (rst),
-        .rst       (rst),			  
-        .en        (GPIO_CATHODE_OUTPUT_en),
-        .data_in   (GPIO_CATHODE_OUPUT_wdata),	     
-        .data_out  (GPIO_CATHODE_OUTPUT)
-    );
-   */
     `IOB_WIRE(GPIO_ANODE_OUTPUT, 8)
     iob_reg #(8)
     anode_output_reg   (
@@ -94,32 +78,20 @@ module iob_gpio
         .data_out  (GPIO_JUMP_OUTPUT)			 
     );
 
-   
-
    // Read GPIO
-   assign GPIO_INPUT_rdata = gpio_input;
-   /*assign GPIO_ECHO_INPUT_rdata = echo_input;
-   assign GPIO_CATHODE_rdata = cathode_input;
-   assign GPIO_ANODE_rdata = anode_input;*/
-   assign GPIO_BUTTON_INPUT_rdata = BTN;
+   assign GPIO_BUTTON1_INPUT_rdata = BTN_1;
+   assign GPIO_BUTTON2_INPUT_rdata = BTN_2;
    assign GPIO_JUMP_INPUT_rdata = JUMP_IN;
- //  assign GPIO_BUTTON_INPUT_rdata = button_input;
+   assign GPIO_SWITCH_INPUT_rdata = SWITCH;
    
    
-   
-
    // Write GPIO
    assign JUMP_OUT = GPIO_JUMP_OUTPUT;
    assign gpio_output = GPIO_OUTPUT;
    assign gpio_output_enable = GPIO_OUTPUT_ENABLE;
    assign PIN = GPIO_OUTPUT_ENABLE;
-   
-   
-   /*assign cathode_output = GPIO_CATHODE_OUTPUT;
-   assign trigger_output = GPIO_TRIGGER_OUTPUT;*/
    assign anode_output = GPIO_ANODE_OUTPUT;
    assign AN = GPIO_ANODE_OUTPUT;
    
-   
-      
+         
 endmodule
